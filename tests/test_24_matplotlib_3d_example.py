@@ -50,13 +50,22 @@ def test_ex24_refresh_button_adds_noise(widget: Matplotlib3DExample, qtbot: QtBo
     # 點擊刷新按鈕
     qtbot.mouseClick(widget.refresh_button, Qt.LeftButton)
 
-    # 獲取圖形上當前的 Z 數據 (應該是帶有噪聲的)
-    # 我們需要從 canvas 的 collections 中獲取數據
-    current_z_data = widget.canvas.ax.collections[0].get_array()
-
-    # 斷言基礎數據 Z_base 沒有被修改
-    assert np.array_equal(widget.Z_base, z_base_copy)
+    # 斷言基礎數據 Z_base 本身沒有被修改
+    assert np.array_equal(widget.Z_base, z_base_copy), "基礎數據不應被噪聲函式修改"
     
-    # 斷言當前繪製的數據與基礎數據不相等 (因為添加了噪聲)
-    # 由於數據是一維數組，需要將 z_base_copy 攤平進行比較
-    assert not np.array_equal(current_z_data, z_base_copy.ravel())
+    # 從圖形集合中獲取實際繪製的頂點數據
+    # ax.collections[0] 是 Poly3DCollection
+    collection = widget.canvas.ax.collections[0]
+    
+    # get_verts() 返回一個列表，每個元素是面(一個四邊形)的頂點
+    # 每個頂點是 [x, y, z]。我們提取每個面第一個頂點的 z 值作為代表
+    # 這足以驗證數據是否被修改
+    verts = collection.get_verts()
+    plotted_z_coords = np.array([v[0][2] for v in verts])
+
+    # 獲取與繪製的面對應的原始 Z 數據
+    # plot_surface 使用 Z[:-1, :-1] 來決定面的顏色和位置
+    base_z_coords = z_base_copy[:-1, :-1].ravel()
+
+    # 斷言繪製出的 Z 座標與原始基礎數據不相等，證明噪聲已應用
+    assert not np.array_equal(plotted_z_coords, base_z_coords), "繪製的 Z 座標應與原始數據不同"
