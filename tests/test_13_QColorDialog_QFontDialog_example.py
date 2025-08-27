@@ -28,7 +28,7 @@ def test_dialog_interaction(widget, qtbot):
 
     # Test font dialog by patching the instance methods
     test_font = QFont("Comic Sans MS", 24)
-    with patch('ex_13_QColorDialog_QFontDialog_example.QFontDialog') as mock_dialog_class:
+    with patch('examples.ex_13_QColorDialog_QFontDialog_example.QFontDialog') as mock_dialog_class:
         # Configure the mock instance that will be created
         mock_instance = MagicMock()
         mock_instance.exec.return_value = True

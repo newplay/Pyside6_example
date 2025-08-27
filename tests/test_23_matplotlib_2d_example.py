@@ -25,32 +25,32 @@ def widget(qtbot: QtBot):
 def test_widget_creation_and_initial_state(widget: Matplotlib2DExample):
     """測試元件創建時的初始狀態是否正確。"""
     # 1. 驗證視窗和圖表標題
-    assert widget.windowTitle() == "Matplotlib 2D 熱圖整合範例"
-    assert "隨機數據熱圖" in widget.canvas.axes.get_title()
+    assert widget.windowTitle() == "Matplotlib 2D 範例 - 網格精度與隨機數據"
+    assert "隨機數據熱圖" in widget.canvas.ax.get_title()
 
     # 2. 驗證 UI 控制項的初始值
-    assert widget.grid_slider.value() == 10
-    assert widget.grid_label.text() == "網格精度: 10x10"
+    assert widget.precision_slider.value() == 100
+    assert widget.precision_label.text() == "網格精度: 100x100"
 
     # 3. 驗證 Matplotlib 圖表的初始狀態
     # 熱圖會創建一個 AxesImage 對象
-    assert len(widget.canvas.axes.images) == 1
+    assert len(widget.canvas.ax.images) == 1
     
     # 獲取圖像數據並驗證其維度
-    initial_data = widget.canvas.axes.images[0].get_array()
-    assert initial_data.shape == (10, 10)
+    initial_data = widget.canvas.ax.images[0].get_array()
+    assert initial_data.shape == (100, 100)
 
 
 def test_refresh_button_changes_data(widget: Matplotlib2DExample, qtbot: QtBot):
     """測試刷新按鈕是否能改變圖表數據，但保持維度不變。"""
     # 獲取初始圖表的數據陣列副本
-    initial_data = widget.canvas.axes.images[0].get_array().copy()
+    initial_data = widget.canvas.ax.images[0].get_array().copy()
 
     # 模擬點擊刷新按鈕
     qtbot.mouseClick(widget.refresh_button, Qt.LeftButton)
 
     # 獲取新圖表的數據
-    new_data = widget.canvas.axes.images[0].get_array()
+    new_data = widget.canvas.ax.images[0].get_array()
 
     # 斷言數據維度保持不變
     assert new_data.shape == initial_data.shape
@@ -64,13 +64,13 @@ def test_slider_changes_grid_and_label(widget: Matplotlib2DExample):
     new_grid_size = 25
 
     # 程式化設定滑桿的值，這會觸發 valueChanged 信號
-    widget.grid_slider.setValue(new_grid_size)
+    widget.precision_slider.setValue(new_grid_size)
 
     # 1. 斷言標籤文本已更新
-    assert widget.grid_label.text() == f"網格精度: {new_grid_size}x{new_grid_size}"
+    assert widget.precision_label.text() == f"網格精度: {new_grid_size}x{new_grid_size}"
 
     # 2. 斷言圖表數據的維度已更新
     # 確認圖表上仍然只有一個 image
-    assert len(widget.canvas.axes.images) == 1
-    updated_data = widget.canvas.axes.images[0].get_array()
+    assert len(widget.canvas.ax.images) == 1
+    updated_data = widget.canvas.ax.images[0].get_array()
     assert updated_data.shape == (new_grid_size, new_grid_size)

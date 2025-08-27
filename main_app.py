@@ -162,7 +162,7 @@ class MainAppWindow(QMainWindow):
         檢測操作系統並從優先級列表中返回第一個可用的、支持中文的字體。
         優先選擇支持繁體中文的字體。
         """
-        db = QFontDatabase()
+        
         os_system = platform.system()
 
         if os_system == "Windows":
@@ -176,7 +176,7 @@ class MainAppWindow(QMainWindow):
             font_preferences = ["Noto Sans CJK TC", "WenQuanYi Zen Hei", "WenQuanYi Micro Hei"]
         
         for font_name in font_preferences:
-            if font_name in db.families():
+            if font_name in QFontDatabase.families():
                 print(f"字體查找：找到並使用 '{font_name}'")
                 return font_name
         
