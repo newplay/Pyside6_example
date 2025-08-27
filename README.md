@@ -39,7 +39,11 @@ This repository contains the following examples:
 To run any of the examples, navigate to the project directory and execute the python script:
 
 ```bash
-python ex_01_QLabel_example.py
+python ./examples/ex_01_QLabel_example.py
+```
+or run the main file `main_app.py`, it's a overview of each sample:
+```bash
+python main_app.py
 ```
 
 ## Dependencies
