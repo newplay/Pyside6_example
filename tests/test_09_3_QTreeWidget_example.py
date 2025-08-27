@@ -3,7 +3,7 @@ import os
 import pytest
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from ex_09_3_QTreeWidget_example import QTreeWidgetExample
+from examples.ex_09_3_QTreeWidget_example import QTreeWidgetExample
 
 @pytest.fixture
 def widget(qtbot):

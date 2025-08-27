@@ -5,7 +5,7 @@ from unittest.mock import patch
 from PySide6.QtWidgets import QMessageBox
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from ex_14_QMainWindow_components_example import MainWindowComponentsExample
+from examples.ex_14_QMainWindow_components_example import MainWindowComponentsExample
 
 @pytest.fixture
 def widget(qtbot):

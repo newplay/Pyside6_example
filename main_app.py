@@ -191,18 +191,21 @@ class MainAppWindow(QMainWindow):
 
     def load_examples(self):
         current_dir = os.path.dirname(os.path.abspath(__file__))
-        example_files = sorted([f for f in os.listdir(current_dir) if f.startswith('ex_') and f.endswith('_example.py')])
+        examples_dir = os.path.join(current_dir, 'examples')
+        if not os.path.isdir(examples_dir):
+            return
+        example_files = sorted([f for f in os.listdir(examples_dir) if f.startswith('ex_') and f.endswith('_example.py')])
 
         for file_name in example_files:
             module_name = file_name[:-3]
-            file_path = os.path.join(current_dir, file_name)
+            file_path = os.path.join(examples_dir, file_name)
             
             try:
                 with open(file_path, 'r', encoding='utf-8') as f:
                     source_code = f.read()
                 self.source_codes.append(source_code)
 
-                module = importlib.import_module(module_name)
+                module = importlib.import_module(f"examples.{module_name}")
                 
                 target_class = None
                 for name, obj in inspect.getmembers(module, inspect.isclass):

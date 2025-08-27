@@ -3,7 +3,7 @@ import os
 import pytest
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from ex_18_QStackedLayout_example import QStackedLayoutExample
+from examples.ex_18_QStackedLayout_example import QStackedLayoutExample
 
 @pytest.fixture
 def widget(qtbot):

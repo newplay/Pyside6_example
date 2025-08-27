@@ -6,7 +6,7 @@ from PySide6.QtWidgets import QFileDialog
 from PySide6.QtCore import Qt
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from ex_12_QFileDialog_example import QFileDialogExample
+from examples.ex_12_QFileDialog_example import QFileDialogExample
 
 @pytest.fixture
 def widget(qtbot):

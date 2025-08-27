@@ -3,7 +3,7 @@ import os
 import pytest
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from ex_07_QSlider_QDial_example import SliderDialExample
+from examples.ex_07_QSlider_QDial_example import SliderDialExample
 
 @pytest.fixture
 def widget(qtbot):

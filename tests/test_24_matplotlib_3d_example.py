@@ -8,7 +8,7 @@ from pytestqt.qtbot import QtBot
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from ex_24_matplotlib_3d_example import Matplotlib3DExample
+from examples.ex_24_matplotlib_3d_example import Matplotlib3DExample
 
 @pytest.fixture
 def widget(qtbot: QtBot):

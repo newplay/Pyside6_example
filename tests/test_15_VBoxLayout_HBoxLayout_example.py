@@ -4,7 +4,7 @@ import pytest
 from PySide6.QtWidgets import QWidget
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from ex_15_VBoxLayout_HBoxLayout_example import VBoxLayoutHBoxLayoutExample
+from examples.ex_15_VBoxLayout_HBoxLayout_example import VBoxLayoutHBoxLayoutExample
 
 @pytest.fixture
 def widget(qtbot):

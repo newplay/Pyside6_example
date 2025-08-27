@@ -4,7 +4,7 @@ import pytest
 from PySide6.QtWidgets import QWidget
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from ex_17_QFormLayout_example import QFormLayoutExample
+from examples.ex_17_QFormLayout_example import QFormLayoutExample
 
 @pytest.fixture
 def widget(qtbot):

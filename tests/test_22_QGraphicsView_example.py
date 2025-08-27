@@ -4,7 +4,7 @@ import pytest
 from PySide6.QtWidgets import QGraphicsRectItem, QGraphicsEllipseItem, QGraphicsTextItem
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from ex_22_QGraphicsView_example import QGraphicsViewExample
+from examples.ex_22_QGraphicsView_example import QGraphicsViewExample
 
 @pytest.fixture
 def widget(qtbot):

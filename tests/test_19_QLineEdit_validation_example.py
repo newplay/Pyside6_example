@@ -5,7 +5,7 @@ from PySide6.QtCore import Qt
 from PySide6.QtWidgets import QLineEdit
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from ex_19_QLineEdit_validation_example import QLineEditValidationExample
+from examples.ex_19_QLineEdit_validation_example import QLineEditValidationExample
 
 @pytest.fixture
 def widget(qtbot):

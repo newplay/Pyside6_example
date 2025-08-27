@@ -4,7 +4,7 @@ import pytest
 from PySide6.QtCore import Qt
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from ex_08_QProgressBar_example import QProgressBarExample
+from examples.ex_08_QProgressBar_example import QProgressBarExample
 
 @pytest.fixture
 def widget(qtbot):

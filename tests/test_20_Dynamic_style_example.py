@@ -7,7 +7,7 @@ from PySide6.QtWidgets import QColorDialog
 from PySide6.QtCore import Qt
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from ex_20_Dynamic_style_example import DynamicStyleExample
+from examples.ex_20_Dynamic_style_example import DynamicStyleExample
 
 @pytest.fixture
 def widget(qtbot):

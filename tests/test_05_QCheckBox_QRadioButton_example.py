@@ -4,7 +4,7 @@ import pytest
 from PySide6.QtCore import Qt
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from ex_05_QCheckBox_QRadioButton_example import CheckRadioExample
+from examples.ex_05_QCheckBox_QRadioButton_example import CheckRadioExample
 
 @pytest.fixture
 def widget(qtbot):

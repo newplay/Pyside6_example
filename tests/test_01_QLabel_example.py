@@ -4,7 +4,7 @@ import pytest
 from PySide6.QtCore import Qt
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from ex_01_QLabel_example import QLabelExample
+from examples.ex_01_QLabel_example import QLabelExample
 
 @pytest.fixture
 def widget(qtbot):

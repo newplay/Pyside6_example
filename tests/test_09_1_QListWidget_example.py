@@ -4,7 +4,7 @@ import pytest
 from PySide6.QtCore import Qt
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from ex_09_1_QListWidget_example import QListWidgetExample
+from examples.ex_09_1_QListWidget_example import QListWidgetExample
 
 @pytest.fixture
 def widget(qtbot):

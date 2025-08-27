@@ -4,7 +4,7 @@ import pytest
 from PySide6.QtCore import Qt
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from ex_06_QComboBox_example import QComboBoxExample
+from examples.ex_06_QComboBox_example import QComboBoxExample
 
 @pytest.fixture
 def widget(qtbot):

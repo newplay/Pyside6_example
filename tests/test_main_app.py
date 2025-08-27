@@ -10,7 +10,10 @@ from main_app import MainAppWindow
 
 # --- 動態計算預期範例數量 ---
 project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
-EXPECTED_COUNT = len([f for f in os.listdir(project_root) if f.startswith('ex_') and f.endswith('_example.py')])
+examples_dir = os.path.join(project_root, 'examples')
+EXPECTED_COUNT = 0
+if os.path.isdir(examples_dir):
+    EXPECTED_COUNT = len([f for f in os.listdir(examples_dir) if f.startswith('ex_') and f.endswith('_example.py')])
 
 @pytest.fixture
 def app(qtbot):

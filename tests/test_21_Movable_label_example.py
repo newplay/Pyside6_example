@@ -4,7 +4,7 @@ import pytest
 from PySide6.QtCore import Qt, QPoint
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from ex_21_Movable_label_example import MovableLabelExample
+from examples.ex_21_Movable_label_example import MovableLabelExample
 
 @pytest.fixture
 def widget(qtbot):
